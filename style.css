@@ -1,0 +1,116 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:'Segoe Script',cursive;
+}
+
+
+#giftScreen,
+#messageScreen{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+#messageScreen{
+    display:none;
+    text-align:center;
+}
+
+
+.gift-box{
+    font-size:150px;
+    cursor:pointer;
+    animation:salla 1.5s infinite;
+}
+
+
+#giftScreen h2{
+    color:white;
+    font-size:35px;
+    margin-top:20px;
+}
+
+
+@keyframes salla{
+
+    0%{
+        transform:rotate(-10deg);
+    }
+
+    50%{
+        transform:rotate(10deg);
+    }
+
+    100%{
+        transform:rotate(-10deg);
+    }
+
+}
+
+
+
+#typingText{
+
+    color:white;
+    font-size:55px;
+    max-width:900px;
+    text-shadow:0 0 15px white;
+
+}
+
+
+
+#balloons{
+
+    font-size:60px;
+    margin-top:40px;
+    animation:uc 5s infinite linear;
+
+}
+
+
+
+@keyframes uc{
+
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+
+}
+
+
+
+.confetti{
+
+    position:absolute;
+    width:12px;
+    height:25px;
+    top:-20px;
+    animation:dus 3s linear forwards;
+
+}
+
+
+@keyframes dus{
+
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+
+}
