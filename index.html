@@ -1,41 +1,128 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi ki Doğdun Yarenn ❤️</title>
+    <title>Senden Özür Dilerim ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+#ozur-popup {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(15, 5, 15, 0.78);
+  backdrop-filter: blur(9px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#ozur-popup .ozur-kutu {
+  background: linear-gradient(145deg, #fff8fb, #ffe5ef);
+  color: #573342;
+  padding: 35px 25px;
+  border-radius: 25px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 105, 150, .3);
+  animation: ozurAcilis .8s cubic-bezier(.2,.8,.2,1);
+}
+
+#ozur-popup h2 {
+  color: #d94d7c;
+  font-size: 25px;
+  margin: 8px 0 20px;
+}
+
+#ozur-popup .kalp {
+  font-size: 43px;
+  animation: kalpAtisi 1.3s infinite;
+}
+
+#ozur-popup p {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+#ozur-popup button {
+  background: linear-gradient(135deg, #ed7199, #d94d7c);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 35px;
+  font-size: 16px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.ucan-kalp {
+  position: fixed;
+  bottom: -40px;
+  z-index: 1000000;
+  pointer-events: none;
+  animation: kalpUcus 5s linear forwards;
+}
+
+@keyframes ozurAcilis {
+  from {opacity:0; transform:scale(.65) translateY(30px);}
+  to {opacity:1; transform:scale(1) translateY(0);}
+}
+
+@keyframes kalpAtisi {
+  50% {transform:scale(1.2);}
+}
+
+@keyframes kalpUcus {
+  to {transform:translateY(-110vh) rotate(360deg); opacity:0;}
+}
+</style>
 </head>
 
 <body>
 
-    <div id="giftScreen">
+<div id="ozur-popup">
+  <div class="ozur-kutu">
+    <div class="kalp">❤️</div>
+    <h2>Senden Özür Dilerim</h2>
+    <p>
+      Seni kırdıysam veya üzdüysem senden çok özür dilerim seni düşünmeden bir an bile geçiremiyorum sensiz hiç iyi değilim ve sensiz olmak istemiyorum hep yanımda ol istiyorum ve senden son bir şans istiyorum kemalin için, çünkü o seni çok seviyor..
+    </p>
+    <button id="ozur-kapat">❤️</button>
+  </div>
+</div>
 
-        <div class="gift-box" id="giftBox">
-            🎁
-        </div>
+<script>
+(function () {
+  const popup = document.getElementById("ozur-popup");
 
-        <h2>Hediyeni Aç</h2>
+  document.addEventListener("click", function () {
+    if (popup.style.display === "none") return;
 
-    </div>
+    // Popup zaten açıkken tekrar işlem yapma.
+    if (popup.dataset.opened === "true") return;
+    popup.dataset.opened = "true";
 
+    for (let i = 0; i < 18; i++) {
+      setTimeout(function () {
+        const kalp = document.createElement("div");
+        kalp.className = "ucan-kalp";
+        kalp.textContent = ["❤️","💕","💗","💖"][Math.floor(Math.random()*4)];
+        kalp.style.left = Math.random() * 100 + "vw";
+        kalp.style.fontSize = (16 + Math.random()*20) + "px";
+        document.body.appendChild(kalp);
+        setTimeout(() => kalp.remove(), 5500);
+      }, i * 180);
+    }
+  }, true);
 
-    <div id="messageScreen">
-
-        <h1 id="typingText"></h1>
-
-        <div id="balloons">
-            🎈 🎈 🎈 🎈 🎈
-        </div>
-
-    </div>
-
-
-    <div id="confetti"></div>
-
-
-    <script src="script.js"></script>
+  document.getElementById("ozur-kapat").addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+})();
+</script>
 
 </body>
 </html>
