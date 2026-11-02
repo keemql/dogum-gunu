@@ -37,5 +37,130 @@
 
     <script src="script.js"></script>
 
+<style>
+</script>
+    
+<style>
+#ozur-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(15, 5, 15, 0.78);
+  backdrop-filter: blur(9px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#ozur-popup .ozur-kutu {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #fff8fb, #ffe5ef);
+  color: #573342;
+  padding: 35px 25px;
+  border-radius: 25px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 105, 150, .3);
+  animation: ozurAcilis .8s cubic-bezier(.2,.8,.2,1);
+}
+
+#ozur-popup h2 {
+  color: #d94d7c;
+  font-size: 25px;
+  margin: 8px 0 20px;
+}
+
+#ozur-popup .kalp {
+  font-size: 43px;
+  animation: kalpAtisi 1.3s infinite;
+}
+
+#ozur-popup p {
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+#ozur-popup button {
+  background: linear-gradient(135deg, #ed7199, #d94d7c);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 35px;
+  font-size: 16px;
+  margin-top: 25px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #e99bb5;
+}
+
+.ucan-kalp {
+  position: fixed;
+  bottom: -40px;
+  z-index: 1000000;
+  pointer-events: none;
+  animation: kalpUcus 5s linear forwards;
+}
+
+@keyframes ozurAcilis {
+  from {opacity:0; transform:scale(.65) translateY(30px);}
+  to {opacity:1; transform:scale(1) translateY(0);}
+}
+
+@keyframes kalpAtisi {
+  50% {transform:scale(1.2);}
+}
+
+@keyframes kalpUcus {
+  to {transform:translateY(-110vh) rotate(360deg); opacity:0;}
+}
+</style>
+
+<div id="ozur-popup">
+  <div class="ozur-kutu">
+    <div class="kalp">❤️</div>
+    <h2>Senden Özür Dilerim</h2>
+
+    <p>
+      Seni kırdıysam veya üzdüysem senden çok özür dilerim seni düşünmeden bir an bile geçiremiyorum sensiz hiç iyi değilim ve sensiz olmak istemiyorum hep yanımda ol istiyorum ve senden son bir şans istiyorum kemalin için, çünkü o seni çok seviyor..
+    </p>
+
+    <button id="ozur-kapat">❤️</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  let gosterildi = false;
+  const popup = document.getElementById("ozur-popup");
+
+  document.addEventListener("click", function () {
+    if (gosterildi) return;
+
+    gosterildi = true;
+    popup.style.display = "flex";
+
+    for (let i = 0; i < 18; i++) {
+      setTimeout(function () {
+        const kalp = document.createElement("div");
+        kalp.className = "ucan-kalp";
+        kalp.textContent = ["❤️","💕","💗","💖"][Math.floor(Math.random()*4)];
+        kalp.style.left = Math.random() * 100 + "vw";
+        kalp.style.fontSize = (16 + Math.random()*20) + "px";
+        document.body.appendChild(kalp);
+
+        setTimeout(() => kalp.remove(), 5500);
+      }, i * 180);
+    }
+  }, true);
+
+  document.getElementById("ozur-kapat").addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+})();
+</script>
+
 </body>
 </html>
